@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Ubuntu";
+    src: url("ubuntu.ttf") format("truetype");
+}
+
+img#loading {position: fixed;margin: auto;margin-top: 0;width: 15px;height: 15px;top: 15px;right: 20px;z-index: 9999999;}
+.blockUI {color: #FFF;font-size: 15px;font-weight: bold;padding: 5px;display: block;background-image: url(../../images/img/bgoverlay.png);background-repeat: repeat}
+
+#avisos {background-color: #CCC;width: 100%;text-align: center;color: #333;padding: 10px;position: fixed;top: 0;left: 0;display: none;}
+	.sucesso {background-color: #D1A729;}
+	.erro {background-color: #900;}
+
+body {background-color: #FFF;margin: 0;padding: 0;width: 100%;background-image: url(../images/img/bg.png);background-repeat: repeat-x;font-family: "Ubuntu", Arial, Helvetica, sans-serif;overflow: auto;font-size: 12px;}
+
+#menu {background-color: #333;width: 100%;margin: 0;padding: 15px 0;}
+	#menu ul#ulmenu {width: 99%;margin: 0 auto;padding: 0;list-style: none;height: auto;overflow: hidden;}
+		#ulmenu li {list-style: none;margin: 0;padding: 0;float: left;margin-right: 20px;}
+			#ulmenu li a, a:link {color: #EFEFEF;text-decoration: none;}
+			#ulmenu li a:hover {color: #FFF;text-decoration: none;}
+
+#global {background-color: #FFF;width: 99%;margin: 0 auto 30px auto;}
+
+ul#list {list-style: none;margin: 0;padding: 0;}
+	#list li {list-style: none;margin: 0;padding: 0;}
+	#list td {background-color: #EFEFEF;}
+	#list li.head td {font-weight: bold;background-color: #FFF !important;color: #999;}
+		#list td a, a:link {color: #069;text-decoration: none;}
+		#list td a:hover {color: #069;text-decoration: underline;}
+	
+table.customerInfo td {background-color: #EFEFEF;}
+table.addNew td {background-color: #EFEFEF;}
+
+input.input {width: 97%;border: solid 1px #999;padding: 3px;}
+textarea.input {width: 70%;height: 150px;border: solid 1px #999;padding: 3px;}
+
+label.label {float: left;display: inline-block;margin-right: 10px;min-width: 100px;}
+input.button {float: right;display: inline;margin-top: 15px;}
+
+h2.title {display: inline;float: left;}
+
+#footer {border-top: solid 1px #CCC;padding: 30px 0;text-align: center;width: 100%;margin-top: 50px;background-color: #EAEAEA;font-size: 11px;color: #666;}

@@ -1,0 +1,141 @@
+<h1>Histórico de {$customerName}</h1>
+
+<form method="post" action="">
+	<input type="hidden" name="update" value="1" />
+	<input type="hidden" name="idCustomer" value="{$customer.id}" />
+
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tr style="background-color: #EFEFEF;">
+			<td colspan="2">
+				<h2 class="title">Informações do cliente</h2>
+				<input type="submit" value="Atualizar" class="button" />
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" style="width: 350px;">
+				
+				<table border="0" cellpadding="4" cellspacing="2" width="100%" class="customerInfo">
+					<tr>
+						<td style="width: 120px;">ID</td>
+						<td>{$customer.id}</td>
+					</tr>
+					<tr>
+						<td>NI</td>
+						<td>
+							<select name="ni">
+								<option value="0" {if $customer.ni == 0}selected="selected"{/if}>0</option>
+								<option value="1" {if $customer.ni == 1}selected="selected"{/if}>1</option>
+								<option value="2" {if $customer.ni == 2}selected="selected"{/if}>2</option>
+								<option value="3" {if $customer.ni == 3}selected="selected"{/if}>3</option>
+								<option value="4" {if $customer.ni == 4}selected="selected"{/if}>4</option>
+								<option value="5" {if $customer.ni == 5}selected="selected"{/if}>5</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Origem</td>
+						<td>{$customer.source}</td>
+					</tr>
+					<tr>
+						<td>Nome</td>
+						<td><input type="text" name="name" value="{$customer.name}" class="input" /></td>
+					</tr>
+					<tr>
+						<td>E-mail</td>
+						<td><input type="text" name="email" value="{$customer.email}" class="input" /></td>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td><input type="text" name="phone" value="{$customer.phone}" class="input" /></td>
+					</tr>
+					<tr>
+						<td>Web</td>
+						<td><input type="text" name="web" value="{$customer.web}" class="input" /></td>
+					</tr>
+					<tr>
+						<td>Desde</td>
+						<td>{$customer.dateSignup}</td>
+					</tr>
+				</table>
+				
+			</td>
+			<td valign="top">
+				
+				<table border="0" cellpadding="4" cellspacing="2" width="100%" class="customerInfo">
+					<tr>
+						<td><textarea cols="10" rows="5" class="input" name="obs" style="height: 243px;width: 99%;">{$customer.obs}</textarea></td>
+					</tr>
+				</table>
+
+			</td>
+		</tr>
+	</table>
+</form>
+
+<br />
+
+<form method="post" action="">
+	
+	<table border="0" cellpadding="4" cellspacing="2" width="100%" class="addNew">
+		<tr>
+			<td colspan="2">
+				<h2 class="title">Incluir atendimento</h2>
+				
+				<input type="hidden" name="post" value="1" />
+				<input type="hidden" name="idCustomer" value="{$subpage}" />
+				
+				<input type="submit" value="Salvar" class="button" />
+			</td>
+		</tr>
+		<tr>
+			<td style="width: 50%;">
+				<label for="content" class="label">Conteúdo</label><br />
+				<textarea cols="10" rows="5" name="content" id="content" class="input" style="width: 99%;"></textarea>
+			</td>
+			<td style="width: 50%;">
+				<label for="nextStep" class="label">Próximo passo</label><br />
+				<textarea cols="10" rows="5" name="nextStep" id="nextStep" class="input" style="width: 99%;"></textarea>
+			</td>
+		</tr>
+	</table>
+
+</form>
+
+<br />
+
+<a name="History">&nbsp;</a>
+<h2>Histórico</h2>
+{if $count == 0}
+	Nenhum histórico encontrado para {$customerName}
+{else}
+	<ul id="list">
+		<li class="head">
+			<table border="0" cellpadding="2" cellspacing="2" width="100%">
+				<tr>
+					<td style="width: 10%;">Data do contato</td>
+					<td>Conteúdo</td>
+					<td style="width: 40%;">Próximo passo</td>
+					<td style="width: 20px;"></td>
+				</tr>
+			</table>
+		</li>
+		{foreach from=$listaHistory item=item}
+			<li>
+				<table border="0" cellpadding="2" cellspacing="2" width="100%">
+					<tr>
+						<td style="width: 10%;">{$item.dateHistory}</td>
+						<td>{$item.content}</td>
+						<td style="width: 40%;{if $item.nextStepFinished == 1}text-decoration: line-through;{/if}">{$item.nextStep}</td>
+						<td style="width: 20px;">
+							<form method="post" action="">
+								<input type="hidden" name="nextStepDone" value="1" />
+								<input type="hidden" name="idHistory" value="{$item.id}" />
+								<input type="checkbox" {if $item.nextStepFinished == 1}checked="checked" disabled="disabled"{else}onclick="this.form.submit()"{/if} />
+							</form>
+						</td>
+					</tr>
+				</table>
+			</li>
+		{/foreach}
+	</ul>
+{/if}

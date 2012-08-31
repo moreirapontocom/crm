@@ -1,0 +1,65 @@
+<form method="post" action="">
+	<input type="hidden" name="new" value="1" />
+	
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tr style="background-color: #EFEFEF;">
+			<td colspan="2" style="padding: 4px;">
+				<h2 class="title">Novo cliente</h2>
+				<input type="submit" value="Salvar" class="button" />
+			</td>
+		</tr>
+		<tr>
+			<td style="width: 50%;">
+
+				<table border="0" cellpadding="4" cellspacing="2" width="100%" class="customerInfo">
+					<tr>
+						<td style="width: 130px;"><label for="ni" class="label">Nível de interesse</label></td>
+						<td>
+							<select name="ni" id="ni" class="input">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="source" class="label">Origem</label></td>
+						<td><input type="text" name="source" id="source" class="input" /></td>
+					</tr>
+					<tr>
+						<td><label for="name" class="label">Nome</label></td>
+						<td><input type="text" name="name" id="name" class="input" /></td>
+					</tr>
+					<tr>
+						<td><label for="email" class="label">E-mail</label></td>
+						<td><input type="text" name="email" id="email" class="input" /></td>
+					</tr>
+					<tr>
+						<td><label for="phone" class="label">Telefone</label></td>
+						<td><input type="text" name="phone" id="phone" class="input" /></td>
+					</tr>
+					<tr>
+						<td><label for="web" class="label">Web</label></td>
+						<td><input type="text" name="web" id="web" class="input" /></td>
+					</tr>
+				</table>
+
+			</td>
+			<td valign="top">
+				
+				<table border="0" cellpadding="4" cellspacing="2" width="100%" class="customerInfo">
+					<tr>
+						<td colspan="2">
+							<label for="obs" class="label">Observações</label><br />
+							<textarea cols="10" rows="5" name="obs" id="obs" class="input" style="width: 98%;"></textarea>
+						</td>
+					</tr>
+				</table>
+
+			</td>
+		</tr>
+	</table>
+</form>

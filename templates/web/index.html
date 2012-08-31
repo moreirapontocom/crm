@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta content="IE=EmulateIE8" http-equiv="X-UA-Compatible">
+	<title>CRM</title>
+	<link rel="shortcut icon" href="http://criarti.com/wp-content/uploads/favicon.ico" /><!-- linkimg -->
+	<link type="text/css" href="{$linkcss}global.css" charset="iso-8859-1" rel="stylesheet" />
+
+	<script type="text/javascript" src="{$linklibrary}jquery/jquery.js"></script>
+
+	<script type="text/javascript" src="{$linkclasses}utils.js"></script>
+	<script type="text/javascript" src="{$linkjs}global.js"></script>
+	
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+</head>
+<body onload="loading(0)">
+	<img src="{$linkimg}loading.gif" height="15" width="15" alt="Aguarde" id="loading" />
+	
+	{if $logged}
+		<div id="menu">
+			<ul id="ulmenu">
+				<li><a href="{$link}">Home</a></li>
+				<li><a href="{$link}novo-cliente">Novo cliente</a></li>
+				<li><a href="{$linkscripts}logout.php">Logout</a></li>
+			</ul>
+		</div><!-- #menu -->
+	{/if}
+	
+	<div id="global">
+		{include file=$main_page_content}
+	</div><!-- #global -->
+	
+	<div id="footer">
+		Desenvolvido por Criarti. Uso exclusivo.
+	</div>
+</body>
+</html>

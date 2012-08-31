@@ -1,0 +1,86 @@
+<h1>CRM - Customer Relationship Manager</h1>
+
+<!--
+'i'                             => $i,
+'history_id'                    => $history_id,
+'history_idCustomer'            => $history_idCustomer,
+'history_dateHistory'           => $history_dateHistory,
+'history_content'               => $history_content,
+'history_nextStep'              => $history_nextStep,
+'history_nextStepFinished'      => $history_nextStepFinished,
+'history_nextStepFinishedDate'  => $history_nextStepFinishedDate,
+'customers_id'                  => $customers_id,
+'customers_ni'                  => $customers_ni,
+'customers_source'              => $customers_source,
+'customers_name'                => $customers_name,
+'customers_email'               => $customers_email,
+'customers_phone'               => $customers_phone,
+'customers_web'                 => $customers_web,
+'customers_obs'                 => $customers_obs,
+'customers_dateSignup'          => $customers_dateSignup
+-->
+
+{if $countNextSteps == 0}
+	<h3>Nenhuma tarefa agendada</h3>
+	
+{else}
+	<h3>Agenda ({$countNextSteps})</h3>
+	
+	<ul id="list">
+		{section name=list loop=$nextSteps}
+			<li>
+				<table border="0" cellpadding="4" cellspacing="2" width="100%">
+					<tr>
+						<td style="width: 90px;">{$nextSteps[list].history_dateHistory}</td>
+						<td style="width: 250px;">{$nextSteps[list].customers_name}</td>
+						<td style="width: 250px;">{$nextSteps[list].customers_email}</td>
+						<td style="width: 100px;">{$nextSteps[list].customers_phone}</td>
+						<td><a href="{$link}ver-historico/{$nextSteps[list].customers_id}#History">{$nextSteps[list].history_nextStep}</a></td>
+						<td style="width: 20px;">
+							<form method="post" action="">
+								<input type="hidden" name="nextStepDone" value="1" />
+								<input type="hidden" name="idHistory" value="{$nextSteps[list].history_id}" />
+								<input type="checkbox" onclick="this.form.submit()" />
+							</form>
+						</td>
+					</tr>
+				</table>
+			</li>
+		{/section}
+	</ul>
+	
+	<br /><br />
+{/if}
+
+<h3>Clientes ({$countCustomers})</h3>
+
+<ul id="list">
+	<li class="head">
+		<table border="0" cellpadding="4" cellspacing="2" width="100%">
+			<tr>
+				<td style="width: 20px;">NI</td>
+				<td style="width: 150px;">Origem</td>
+				<td>Nome</td>
+				<td style="width: 250px;">E-mail</td>
+				<td style="width: 90px;">Telefone</td>
+				<td style="width: 180px;">Site</td>
+				<td style="width: 80px;">Desde</td>
+			</tr>
+		</table>
+	</li>
+	{foreach from=$listaCustomers item=item}
+		<li>
+			<table border="0" cellpadding="4" cellspacing="2" width="100%">
+				<tr>
+					<td style="width: 20px;">{$item.ni}</td>
+					<td style="width: 150px;">{$item.source}</td>
+					<td><a href="{$link}ver-historico/{$item.id}">{$item.name}</a></td>
+					<td style="width: 250px;">{$item.email}</td>
+					<td style="width: 90px;">{$item.phone}</td>
+					<td style="width: 180px;">{$item.web}</td>
+					<td style="width: 80px;">{$item.dateSignup}</td>
+				</tr>
+			</table>
+		</li>
+	{/foreach}
+</ul>
